@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+    title: string;
 }
 
 const { title } = Astro.props;
@@ -8,28 +8,59 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <section>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+            <meta name="generator" content={Astro.generator} />
+            <title>{title}</title>
+        </head>
+        <body>
+            <h1><span class="text-gradient">LordNikon</span> is a nerd</h1>
+            <p class="bio">
+                LordNikon is a nerd. He likes to code and play video games. He also likes to make websites.
+            </p>
+            <slot />
+        </body>
+    </section>
+
+    <style is:global>
+        :root {
+            --accent: 124, 58, 237;
+            --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+        }
+        html {
+            font-family: system-ui, sans-serif;
+            background-color: #282a36;
+            color: #8be9fd;
+            padding: 30px;
+        }
+        code {
+            font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+                Courier New, monospace;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0;
+        }
+        .text-gradient {
+            background-image: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 400%;
+            background-position: 0%;
+        }
+        .bio {
+            margin-bottom: 2rem;
+        }
+    </style>
+
+
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
